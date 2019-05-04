@@ -22,8 +22,9 @@
     "paths": {
       "*": ["src/*", "node_modules/*"]
     },
+    "resolveJsonModule": true,
     "jsx": "react",
     "esModuleInterop": true
   },
-  "include": ["src", "types"],
+  "include": ["src", "types"]
 }
