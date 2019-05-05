@@ -43,7 +43,7 @@ export default async ({
       if (doc.modifiedCount > 0) {
         return `Modified ${name}`;
       } else if (doc.upsertedCount > 0) {
-        return `Upserted ${name}`;
+        return `Inserted ${name}`;
       } else if (doc.matchedCount > 0) {
         return `${name} not modified`;
       }
