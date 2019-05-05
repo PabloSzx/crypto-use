@@ -13,7 +13,7 @@ describe('entire cycle', () => {
   const name = 'test';
   const key = 'asd';
 
-  it('should complete the cycle', async () => {
+  it('should complete the cycle', async done => {
     await new_key({
       url,
       name,
@@ -37,5 +37,6 @@ describe('entire cycle', () => {
     });
 
     expect(decrypted_data).toEqual(data);
+    done();
   });
 });
