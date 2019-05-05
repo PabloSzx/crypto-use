@@ -10,3 +10,4 @@ src
 *.ts
 !*.d.ts
 jest.config.js
+coverage

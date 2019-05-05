@@ -6,13 +6,41 @@ dotenv.config();
 describe('key retrieving', () => {
   const url = process.env.MONGODB_URL || '';
 
-  it('should insert a key', async done => {
+  it('should overwrite a key', async done => {
     const name = 'test';
-    const key = 'asd';
-    const info = await new_key({
+
+    await new_key({
       url,
       name,
-      key,
+      key: 'asda',
+      overwrite: true,
+    });
+    const { key: key1 } = await get_key({
+      url,
+      name,
+    });
+
+    await new_key({
+      url,
+      name,
+      key: 'asdb',
+      overwrite: true,
+    });
+
+    const { key: key2 } = await get_key({
+      url,
+      name,
+    });
+
+    expect([key1, key2]).toEqual(['asda', 'asdb']);
+    done();
+  }, 30000);
+
+  it('should insert a key', async done => {
+    const info = await new_key({
+      url,
+      name: 'test2',
+      key: 'asd',
       overwrite: true,
     });
 
@@ -22,9 +50,30 @@ describe('key retrieving', () => {
   it('should get a key', async done => {
     const key = await get_key({
       url,
-      name: 'test',
+      name: 'test2',
     });
     expect(key).toBeTruthy();
     done();
+  });
+
+  describe('key management errors', () => {
+    it('insert should throw if overwrite is false', async done => {
+      await new_key({
+        url,
+        name: 'test3',
+        key: 'asd',
+        overwrite: true,
+      });
+
+      new_key({
+        url,
+        name: 'test3',
+        key: 'asd',
+        overwrite: false,
+      }).catch(e => {
+        expect(e).toBeTruthy();
+        done();
+      });
+    }, 30000);
   });
 });

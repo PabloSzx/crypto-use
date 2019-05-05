@@ -10,7 +10,7 @@ describe('entire cycle', () => {
   const data = JSON.parse(
     fs.readFileSync(path.join(__dirname, './data/data.json')).toString()
   );
-  const name = 'test';
+  const name = 'test3';
   const key = 'asd';
 
   it('should complete the cycle', async done => {

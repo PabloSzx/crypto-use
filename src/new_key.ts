@@ -45,27 +45,18 @@ export default async ({
         return `Modified ${name}`;
       } else if (doc.upsertedCount > 0) {
         return `Inserted ${name}`;
-      } else if (doc.matchedCount > 0) {
-        return `${name} not modified`;
       }
-    } else {
-      const doc = await collection.insertOne({
-        _id: name,
-        key,
-      });
-
-      client.close();
-
-      if (doc.insertedCount >= 0) {
-        return `Inserted ${name}`;
-      }
+      return `${name} not modified`;
     }
+    await collection.insertOne({
+      _id: name,
+      key,
+    });
 
-    throw new Error(
-      `Error inserting key for ${name} in ${collectionName} collection`
-    );
+    client.close();
+
+    return `Inserted ${name}`;
   } catch (err) {
-    console.error(`Error inserting new key`, err);
     throw err;
   }
 };

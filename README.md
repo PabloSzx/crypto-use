@@ -1,6 +1,6 @@
 # crypto-use
 
-![version](https://badgen.net/npm/v/crypto-use)
+![github-version](https://badgen.net/github/release/pabloszx/crypto-use)
 ![install-size](https://badgen.net/packagephobia/install/crypto-use)
 ![publish-size](https://badgen.net/packagephobia/publish/crypto-use)
 ![dependencies](https://badgen.net/david/dep/pabloszx/crypto-use)

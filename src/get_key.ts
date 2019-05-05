@@ -48,7 +48,6 @@ export default async ({
       `Key not available for ${name} in ${collectionName} collection`
     );
   } catch (err) {
-    console.error(`Error getting key`, err);
-    return err;
+    throw err;
   }
 };

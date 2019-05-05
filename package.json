@@ -18,7 +18,7 @@
     "prepublishOnly": "tsdx build",
     "start": "tsdx watch",
     "test": "tsdx test",
-    "watch": "tsdx test --watchAll"
+    "watch": "tsdx test --watchAll --coverage"
   },
   "husky": {
     "hooks": {
