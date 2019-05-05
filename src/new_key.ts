@@ -40,6 +40,7 @@ export default async ({
           upsert: true,
         }
       );
+      client.close();
       if (doc.modifiedCount > 0) {
         return `Modified ${name}`;
       } else if (doc.upsertedCount > 0) {
@@ -52,6 +53,8 @@ export default async ({
         _id: name,
         key,
       });
+
+      client.close();
 
       if (doc.insertedCount >= 0) {
         return `Inserted ${name}`;
