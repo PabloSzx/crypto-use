@@ -4,7 +4,9 @@ defaults: &defaults
   working_directory: ~/repo
   docker:
     - image: circleci/node
-
+    - image: circleci/mongo
+  environment:
+    - MONGODB_URL: 'mongodb://localhost:27017'
 jobs:
   test:
     <<: *defaults
