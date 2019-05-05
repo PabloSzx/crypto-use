@@ -1,6 +1,10 @@
 {
   "name": "crypto-use",
   "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pabloszx/crypto-use.git"
+  },
   "license": "MIT",
   "files": [
     "dist"
@@ -12,7 +16,8 @@
   "scripts": {
     "build": "tsdx build",
     "start": "tsdx watch",
-    "test": "tsdx test --watchAll"
+    "test": "tsdx test --watchAll",
+    "prepublishOnly": "tsdx build"
   },
   "husky": {
     "hooks": {
@@ -27,15 +32,19 @@
   },
   "dependencies": {
     "crypto-js": "^3.1.9-1",
+    "lodash": "^4.17.11",
     "mongodb": "^3.2.3",
     "serialize-javascript": "^1.7.0"
   },
   "devDependencies": {
     "@types/crypto-js": "^3.1.43",
+    "@types/dotenv": "^6.1.1",
     "@types/jest": "^24.0.12",
+    "@types/lodash": "^4.14.123",
     "@types/mongodb": "^3.1.26",
     "@types/prettier": "^1.16.3",
     "@types/serialize-javascript": "^1.5.0",
+    "dotenv": "^8.0.0",
     "husky": "^2.1.0",
     "prettier": "^1.17.0",
     "pretty-quick": "^1.10.0",
