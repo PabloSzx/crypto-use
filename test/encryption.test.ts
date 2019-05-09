@@ -51,7 +51,7 @@ describe('decryption errors catches', () => {
         encrypted_data: '',
         secret_key: 'asd',
       });
-    }).toThrowError('Encrypted Data must be a valid string');
+    }).toThrowError('Encrypted Data must be valid data');
   });
 
   it('catches empty secret key', () => {
@@ -61,5 +61,39 @@ describe('decryption errors catches', () => {
         secret_key: '',
       });
     }).toThrowError('Secret Key must be a valid string');
+  });
+
+  it('catches not encrypted data', () => {
+    expect(() => {
+      decrypt({
+        encrypted_data: 'asd',
+        secret_key: 'asd',
+      });
+    }).toThrowError('Data not encrypted or invalid key');
+  });
+
+  it('catches wrong secret key', () => {
+    expect(() => {
+      decrypt({
+        encrypted_data: encrypt({
+          data: 'asd',
+          secret_key: 'key1',
+        }),
+        secret_key: 'key2',
+      });
+    }).toThrowError('Data not encrypted or invalid key');
+  });
+
+  it('gives back if not encrypted data', () => {
+    expect(
+      decrypt({
+        encrypted_data: { a: 1, b: 2 },
+        secret_key: 'asd',
+        give_back_invalid: true,
+      })
+    ).toEqual({
+      a: 1,
+      b: 2,
+    });
   });
 });
