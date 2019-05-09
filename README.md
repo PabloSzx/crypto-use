@@ -18,7 +18,7 @@ Right now only using [**rabbit**](https://cryptojs.gitbook.io/docs/#ciphers) fro
 Right now there are four features working:
 
 - Encrypt Data using Ciphers
-- Dencrypt Data using Ciphers
+- Decrypt Data using Ciphers
 - Search for a key to a specified **MongoDB** database and collection
 - Save a key to a specified **MongoDB** database and collection
 
