@@ -5249,10 +5249,10 @@ ts-jest@^24.0.2:
     semver "^5.5"
     yargs-parser "10.x"
 
-tsdx@^0.5.7-0:
-  version "0.5.7-0"
-  resolved "https://registry.yarnpkg.com/tsdx/-/tsdx-0.5.7-0.tgz#d45df19d0e2a28c7fd52da9b9a1f98745cf032f9"
-  integrity sha512-8fe1BsBGFBn3BghZUuoKZMrR4ByFGWqORr0ZSA3oMC1zwG8dBRGrgdwlMEGxobhf2Fz9u6coxuj+lP6JVBEcoA==
+tsdx@^0.5.8:
+  version "0.5.8"
+  resolved "https://registry.yarnpkg.com/tsdx/-/tsdx-0.5.8.tgz#43b6b2210bcca30522d6de8ccf8b4d78dc5bc252"
+  integrity sha512-9Q3ggxRuCcLJByd1z6aPcR3o0J08wJzNJKdgBOnktJQUoRB6Hpfe7cnts/mYWShnFmqkgsngzenwp8+3P/xrIw==
   dependencies:
     "@babel/core" "^7.2.2"
     "@jaredpalmer/rollup-plugin-preserve-shebang" "^0.1.7"
