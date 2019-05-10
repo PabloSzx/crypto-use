@@ -388,6 +388,18 @@
   dependencies:
     "@types/jest-diff" "*"
 
+"@types/lodash-es@^4.17.3":
+  version "4.17.3"
+  resolved "https://registry.yarnpkg.com/@types/lodash-es/-/lodash-es-4.17.3.tgz#87eb0b3673b076b8ee655f1890260a136af09a2d"
+  integrity sha512-iHI0i7ZAL1qepz1Y7f3EKg/zUMDwDfTzitx+AlHhJJvXwenP682ZyGbgPSc5Ej3eEAKVbNWKFuwOadCj5vBbYQ==
+  dependencies:
+    "@types/lodash" "*"
+
+"@types/lodash@*":
+  version "4.14.126"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.126.tgz#47cff3ea014aa083194f8ca3ec351136c3786613"
+  integrity sha512-HxQ+wQnBtnL0LszZrVdMqWIlzZNyKuMLUb6swQ3mo6ysPqpAu7gfnapCQIi0B+Mrf0fNLZh8AWgJs2njejVasg==
+
 "@types/lodash@^4.14.123":
   version "4.14.125"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.125.tgz#b5fa71f3080a2136ba2702c390ffe528ec1e3980"
@@ -3533,7 +3545,7 @@ mongodb-core@3.2.4:
   optionalDependencies:
     saslprep "^1.0.0"
 
-mongodb@^3.2.3:
+mongodb@^3.2.4:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-3.2.4.tgz#770eca46ba89a830816e172830c0743660a2ce31"
   integrity sha512-tjuwdRb89oyCamBG9lWkb7Sf4L/XJ0hsTC22NkbECl3j2X8n+rM+ZlK3dyIPdaJXdc4FOKIRd9dodVJgCtsYMA==
@@ -5217,7 +5229,7 @@ ts-jest@^24.0.2:
     semver "^5.5"
     yargs-parser "10.x"
 
-tsdx@~0.5.9:
+tsdx@^0.5.9:
   version "0.5.9"
   resolved "https://registry.yarnpkg.com/tsdx/-/tsdx-0.5.9.tgz#5ec60dfd3fc59d7fe2ad3fdadce21ed264b5a5e0"
   integrity sha512-E2B7rY4mz0omcJ+jjjgkrOCePaVcv8eXja4I/nnlxz7IaSxqu2tMaOorUqeAOx9xntgXGY+cqz0o+HN1ou752Q==
