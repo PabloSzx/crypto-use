@@ -17,15 +17,22 @@ export default ({
   validate(secret_key, 'Secret Key', 'string');
   validate(give_back_invalid, 'Give back invalid', 'boolean');
 
+  let line = 0;
   try {
     const decrypted = rabbit.decrypt(
       isString(encrypted_data) ? encrypted_data : serialize(encrypted_data),
       secret_key
     );
 
+    line = 1;
+
     const decrypted_string = decrypted.toString(crypto.enc.Utf8);
 
+    line = 2;
+
     const decrypted_data = eval(`( ${decrypted_string} )`);
+
+    line = 3;
 
     return decrypted_data;
   } catch (err) {
@@ -37,6 +44,7 @@ export default ({
         throw new Error('Data not encrypted or invalid key!');
       }
       default:
+        console.error('Error on line', line);
         throw err;
     }
   }
