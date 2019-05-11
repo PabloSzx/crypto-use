@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import { get_key, new_key, encrypt, decrypt } from '../';
+import { get_key, new_key, encrypt, decrypt } from 'crypto-use';
 import fs from 'fs';
 import path from 'path';
 

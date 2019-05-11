@@ -1484,6 +1484,16 @@ crypto-js@^3.1.9-1:
   resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-3.1.9-1.tgz#fda19e761fc077e01ffbfdc6e9fdfc59e8806cd8"
   integrity sha1-/aGedh/Ad+Af+/3G6f38WeiAbNg=
 
+crypto-use@^1.0.12:
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/crypto-use/-/crypto-use-1.0.12.tgz#22f387c5a9ecb76bef9309a2bd428ff2c5de9a50"
+  integrity sha512-5CbWAyyEJ5K/C+c0bs+2LRmWDUSr5vYER4YkMq3YKXN3Rggapx203njP1EWX2ypT+JGmq2564wANZReYAGTVDw==
+  dependencies:
+    crypto-js "^3.1.9-1"
+    lodash "^4.17.11"
+    mongodb "^3.2.3"
+    serialize-javascript "^1.7.0"
+
 cssom@0.3.x, "cssom@>= 0.3.2 < 0.4.0":
   version "0.3.6"
   resolved "https://registry.yarnpkg.com/cssom/-/cssom-0.3.6.tgz#f85206cee04efa841f3c5982a74ba96ab20d65ad"
@@ -3545,7 +3555,7 @@ mongodb-core@3.2.4:
   optionalDependencies:
     saslprep "^1.0.0"
 
-mongodb@^3.2.4:
+mongodb@^3.2.3, mongodb@^3.2.4:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-3.2.4.tgz#770eca46ba89a830816e172830c0743660a2ce31"
   integrity sha512-tjuwdRb89oyCamBG9lWkb7Sf4L/XJ0hsTC22NkbECl3j2X8n+rM+ZlK3dyIPdaJXdc4FOKIRd9dodVJgCtsYMA==

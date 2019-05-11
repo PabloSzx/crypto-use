@@ -67,7 +67,7 @@ describe('decryption errors catches', () => {
     expect(() => {
       decrypt({
         encrypted_data: 'asd',
-        secret_key: 'asd',
+        secret_key: '123',
       });
     }).toThrowError('Data not encrypted or invalid key');
   });

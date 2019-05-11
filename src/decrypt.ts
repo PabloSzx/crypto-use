@@ -17,29 +17,20 @@ export default ({
   validate(secret_key, 'Secret Key', 'string');
   validate(give_back_invalid, 'Give back invalid', 'boolean');
 
-  let line = 0;
-  let data: any;
   try {
     const decrypted = rabbit.decrypt(
       isString(encrypted_data) ? encrypted_data : serialize(encrypted_data),
       secret_key
     );
 
-    line = 1;
-    data = decrypted;
-
     const decrypted_string = decrypted.toString(crypto.enc.Utf8);
 
-    line = 2;
-    data = decrypted_string;
-
     const decrypted_data = eval(`( ${decrypted_string} )`);
-
-    line = 3;
 
     return decrypted_data;
   } catch (err) {
     switch (err.message) {
+      case 'Invalid or unexpected token':
       case 'Malformed UTF-8 data': {
         if (give_back_invalid) {
           return encrypted_data;
@@ -47,7 +38,6 @@ export default ({
         throw new Error('Data not encrypted or invalid key!');
       }
       default:
-        console.error('Error on line', line, data);
         throw err;
     }
   }
