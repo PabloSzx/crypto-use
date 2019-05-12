@@ -7,6 +7,8 @@
 ![dev-dependencies](https://badgen.net/david/dev/pabloszx/crypto-use)
 [![CircleCI](https://circleci.com/gh/PabloSzx/crypto-use.svg?style=svg)](https://circleci.com/gh/PabloSzx/crypto-use)
 
+[![Try crypto-use on RunKit](https://badge.runkitcdn.com/crypto-use.svg)](https://npm.runkit.com/crypto-use)
+
 ## Description
 
 Library designed to simplify the use of encrypted data.
