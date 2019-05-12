@@ -1,6 +1,6 @@
 import crypto from 'crypto-js';
 import rabbit from 'crypto-js/rabbit';
-import { isString } from 'lodash';
+import { isString } from 'validate.js';
 import serialize from 'serialize-javascript';
 import { validate } from './utils';
 

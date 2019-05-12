@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { isString, isEmpty, isBoolean } from 'validate.js';
 
 export const validate = (
   data: any,
@@ -7,22 +7,22 @@ export const validate = (
 ) => {
   switch (type) {
     case 'string': {
-      if (!_.isString(data)) {
+      if (!isString(data)) {
         throw new Error(`${label} must be string!`);
       }
-      if (_.isEmpty(data)) {
+      if (isEmpty(data)) {
         throw new Error(`${label} must be a valid string`);
       }
       return;
     }
     case 'data': {
-      if (_.isEmpty(data)) {
+      if (isEmpty(data)) {
         throw new Error(`${label} must be valid data`);
       }
       return;
     }
     case 'boolean': {
-      if (!_.isBoolean(data)) {
+      if (!isBoolean(data)) {
         throw new Error(`${label} must be a boolean`);
       }
       return;
