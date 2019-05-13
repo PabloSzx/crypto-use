@@ -103,7 +103,7 @@ import { new_key } from 'crypto-use';
 })();
 ```
 
-> If no key is given, it will be automatically generated using [randomstring](https://www.npmjs.com/package/randomstring#api), which you can customize using the key **generateOptions**
+> If no key is given, it will be automatically generated using [randomstring](https://www.npmjs.com/package/randomstring#api), which you can customize using **generateOptions**
 
 ## License
 
