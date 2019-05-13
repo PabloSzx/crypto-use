@@ -24,4 +24,10 @@ describe('validation', () => {
       validate(null, 'null', 'boolean');
     }).toThrowError('null must be a boolean');
   });
+
+  it('should throw if not object', () => {
+    expect(() => {
+      validate([], 'array', 'object');
+    }).toThrowError('array must be an object');
+  });
 });

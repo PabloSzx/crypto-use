@@ -15,11 +15,10 @@ export default async ({
   key: string;
   name: string;
 }> => {
-  validate(url, 'Mongo URL', 'string');
-  validate(name, 'Key Name', 'string');
-  validate(dbName, 'Database Name', 'string');
-  validate(collectionName, 'Collection Name', 'string');
-
+  validate(url, 'url', 'string');
+  validate(name, 'name', 'string');
+  validate(dbName, 'dbName', 'string');
+  validate(collectionName, 'collectionName', 'string');
   try {
     const client = await MongoClient.connect(url, {
       useNewUrlParser: true,

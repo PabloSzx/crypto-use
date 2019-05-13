@@ -1,4 +1,6 @@
 import { MongoClient } from 'mongodb';
+import { generate } from 'randomstring';
+import { isEmpty } from 'validate.js';
 import { validate } from './utils';
 
 export default async ({
@@ -8,19 +10,38 @@ export default async ({
   dbName = 'keys',
   collectionName = 'keys',
   overwrite = false,
+  generateOptions = {},
 }: {
   url: string;
   name: string;
-  key: string;
+  key?: string;
   dbName?: string;
   collectionName?: string;
   overwrite?: boolean;
+  generateOptions?: {
+    length?: number;
+    readable?: boolean;
+    charset?: 'alphanumeric' | 'numeric' | 'alphabetic' | 'hex' | 'string';
+    capitalization?: 'lowerse' | 'uppercase' | undefined;
+  };
 }): Promise<string> => {
-  validate(url, 'Mongo URL', 'string');
-  validate(name, 'Key Name', 'string');
-  validate(key, 'Key', 'string');
-  validate(dbName, 'Database Name', 'string');
-  validate(collectionName, 'Collection Name', 'string');
+  validate(url, 'url', 'string');
+  validate(name, 'key', 'string');
+  validate(generateOptions, 'randomOptions', 'object');
+  validate(dbName, 'dbName', 'string');
+  validate(collectionName, 'collectionName', 'string');
+
+  if (isEmpty(key)) {
+    key = generate({
+      length: 32,
+      readable: false,
+      capitalization: undefined,
+      ...generateOptions,
+    });
+  } else {
+    validate(key, 'key', 'string');
+  }
+
   try {
     const client = await MongoClient.connect(url, {
       useNewUrlParser: true,

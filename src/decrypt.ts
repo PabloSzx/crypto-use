@@ -29,6 +29,12 @@ export default ({
 
     return decrypted_data;
   } catch (err) {
+    if (err.message.includes('is not defined')) {
+      if (give_back_invalid) {
+        return encrypted_data;
+      }
+      throw new Error('Data not encrypted or invalid key!');
+    }
     switch (err.message) {
       case 'Invalid or unexpected token':
       case 'Malformed UTF-8 data': {

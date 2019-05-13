@@ -1,9 +1,9 @@
-import { isString, isEmpty, isBoolean } from 'validate.js';
+import { isString, isEmpty, isBoolean, isObject, isArray } from 'validate.js';
 
 export const validate = (
   data: any,
   label: string,
-  type: 'string' | 'data' | 'boolean' = 'data'
+  type: 'string' | 'data' | 'boolean' | 'object' = 'data'
 ) => {
   switch (type) {
     case 'string': {
@@ -24,6 +24,12 @@ export const validate = (
     case 'boolean': {
       if (!isBoolean(data)) {
         throw new Error(`${label} must be a boolean`);
+      }
+      return;
+    }
+    case 'object': {
+      if (!isObject(data) || isArray(data)) {
+        throw new Error(`${label} must be an object`);
       }
       return;
     }

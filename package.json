@@ -34,6 +34,7 @@
   "dependencies": {
     "crypto-js": "^3.1.9-1",
     "mongodb": "^3.2.4",
+    "randomstring": "^1.1.5",
     "serialize-javascript": "^1.7.0",
     "validate.js": "^0.12.0"
   },
@@ -43,6 +44,7 @@
     "@types/jest": "^24.0.12",
     "@types/mongodb": "^3.1.26",
     "@types/prettier": "^1.16.3",
+    "@types/randomstring": "^1.1.6",
     "@types/serialize-javascript": "^1.5.0",
     "crypto-use": "^1.0.13-0",
     "dotenv": "^8.0.0",
