@@ -1,7 +1,5 @@
 import crypto from 'crypto-js';
 import rabbit from 'crypto-js/rabbit';
-import { isString } from 'validate.js';
-import serialize from 'serialize-javascript';
 import { validate } from './utils';
 
 export default ({
@@ -9,19 +7,17 @@ export default ({
   secret_key,
   give_back_invalid = false,
 }: {
-  encrypted_data: any;
+  encrypted_data: string | any;
   secret_key: string;
   give_back_invalid?: boolean;
 }) => {
-  validate(encrypted_data, 'Encrypted Data', 'data');
-  validate(secret_key, 'Secret Key', 'string');
-  validate(give_back_invalid, 'Give back invalid', 'boolean');
+  validate(secret_key, 'secret_key', 'string');
+  validate(give_back_invalid, 'give_back_invalid', 'boolean');
 
   try {
-    const decrypted = rabbit.decrypt(
-      isString(encrypted_data) ? encrypted_data : serialize(encrypted_data),
-      secret_key
-    );
+    validate(encrypted_data, 'encrypted_data', 'string');
+
+    const decrypted = rabbit.decrypt(encrypted_data, secret_key);
 
     const decrypted_string = decrypted.toString(crypto.enc.Utf8);
 
@@ -29,22 +25,9 @@ export default ({
 
     return decrypted_data;
   } catch (err) {
-    if (err.message.includes('is not defined')) {
-      if (give_back_invalid) {
-        return encrypted_data;
-      }
-      throw new Error('Data not encrypted or invalid key!');
+    if (give_back_invalid) {
+      return encrypted_data;
     }
-    switch (err.message) {
-      case 'Invalid or unexpected token':
-      case 'Malformed UTF-8 data': {
-        if (give_back_invalid) {
-          return encrypted_data;
-        }
-        throw new Error('Data not encrypted or invalid key!');
-      }
-      default:
-        throw err;
-    }
+    throw new Error('Data not encrypted or invalid key!');
   }
 };

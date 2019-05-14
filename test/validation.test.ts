@@ -4,19 +4,13 @@ describe('validation', () => {
   it('should throw if empty string', () => {
     expect(() => {
       validate('', 'string', 'string');
-    }).toThrowError('string must be a valid string');
+    }).toThrowError('string must be a non-empty string');
   });
 
   it('should throw if not string', () => {
     expect(() => {
       validate(null, 'null', 'string');
-    }).toThrowError('null must be string');
-  });
-
-  it('should throw if empty data', () => {
-    expect(() => {
-      validate({}, 'object', 'data');
-    }).toThrowError('object must be valid data');
+    }).toThrowError('null must be a non-empty string');
   });
 
   it('should throw if not boolean', () => {

@@ -7,16 +7,17 @@
   },
   "license": "MIT",
   "files": [
-    "dist"
+    "dist",
+    "example.js"
   ],
   "main": "dist/index.js",
-  "umd:main": "dist/tsdxtest.umd.production.js",
-  "module": "dist/tsdxtest.es.production.js",
-  "typings": "dist/index.d.ts",
+  "unpkg": "dist/index.umd.js",
+  "module": "dist/index.mjs",
+  "source": "src/index.ts",
+  "types": "dist/src/index.d.ts",
   "scripts": {
-    "build": "tsdx build",
+    "build": "microbundle",
     "prepublishOnly": "yarn build && yarn test",
-    "start": "tsdx watch",
     "test": "tsdx test",
     "watch": "tsdx test --watch --coverage"
   },
@@ -33,6 +34,7 @@
   },
   "dependencies": {
     "crypto-js": "^3.1.9-1",
+    "lodash": "^4.17.11",
     "mongodb": "^3.2.4",
     "randomstring": "^1.1.5",
     "serialize-javascript": "^1.7.0",
@@ -42,6 +44,7 @@
     "@types/crypto-js": "^3.1.43",
     "@types/dotenv": "^6.1.1",
     "@types/jest": "^24.0.12",
+    "@types/lodash": "^4.14.126",
     "@types/mongodb": "^3.1.26",
     "@types/prettier": "^1.16.3",
     "@types/randomstring": "^1.1.6",
@@ -50,6 +53,7 @@
     "dotenv": "^8.0.0",
     "husky": "^2.1.0",
     "jest": "^24.8.0",
+    "microbundle": "^0.11.0",
     "prettier": "^1.17.0",
     "pretty-quick": "^1.10.0",
     "rollup": "^1.11.3",

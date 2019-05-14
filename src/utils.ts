@@ -1,23 +1,15 @@
-import { isString, isEmpty, isBoolean, isObject, isArray } from 'validate.js';
+import { isString, isEmpty, isBoolean } from 'validate.js';
+import isPlainObject from 'lodash/isPlainObject';
 
 export const validate = (
   data: any,
   label: string,
-  type: 'string' | 'data' | 'boolean' | 'object' = 'data'
+  type: 'string' | 'boolean' | 'object'
 ) => {
   switch (type) {
     case 'string': {
-      if (!isString(data)) {
-        throw new Error(`${label} must be string!`);
-      }
-      if (isEmpty(data)) {
-        throw new Error(`${label} must be a valid string`);
-      }
-      return;
-    }
-    case 'data': {
-      if (isEmpty(data)) {
-        throw new Error(`${label} must be valid data`);
+      if (!isString(data) || isEmpty(data)) {
+        throw new Error(`${label} must be a non-empty string!`);
       }
       return;
     }
@@ -28,11 +20,10 @@ export const validate = (
       return;
     }
     case 'object': {
-      if (!isObject(data) || isArray(data)) {
+      if (!isPlainObject(data)) {
         throw new Error(`${label} must be an object`);
       }
       return;
     }
-    default:
   }
 };

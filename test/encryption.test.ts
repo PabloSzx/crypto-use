@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { encrypt, decrypt } from '../src';
+import { encrypt, decrypt, encrypt_object, decrypt_object } from '../src';
 
 describe('encryption works', () => {
   it('encrypts fine', () => {
@@ -24,43 +24,47 @@ describe('encryption works', () => {
   });
 });
 
-describe('encryption errors catches', () => {
-  it('catches empty data', () => {
-    expect(() => {
-      encrypt({
-        data: '',
-        secret_key: 'asd',
-      });
-    }).toThrowError('Data must be valid');
-  });
+describe('object encryption works', () => {
+  it('encrypts the object fine', () => {
+    const data = JSON.parse(
+      fs.readFileSync(path.join(__dirname, './data/object.json')).toString()
+    );
 
+    const secret_key = 'asd';
+
+    const encrypted_object: any = encrypt_object({
+      data,
+      secret_key,
+    });
+
+    const decrypted_object = decrypt_object({
+      encrypted_object,
+      secret_key,
+    });
+
+    expect(decrypted_object).toEqual(data);
+  });
+});
+
+describe('encryption errors catches', () => {
   it('catches empty secret key', () => {
     expect(() => {
       encrypt({
         data: 'asd',
         secret_key: '',
       });
-    }).toThrowError('Secret Key must be a valid string');
+    }).toThrowError('secret_key must be a non-empty string');
   });
 });
 
 describe('decryption errors catches', () => {
-  it('catches empty data', () => {
-    expect(() => {
-      decrypt({
-        encrypted_data: '',
-        secret_key: 'asd',
-      });
-    }).toThrowError('Encrypted Data must be valid data');
-  });
-
   it('catches empty secret key', () => {
     expect(() => {
       decrypt({
         encrypted_data: 'asd',
         secret_key: '',
       });
-    }).toThrowError('Secret Key must be a valid string');
+    }).toThrowError('secret_key must be a non-empty string');
   });
 
   it('catches not encrypted data', () => {

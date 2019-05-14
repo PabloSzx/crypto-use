@@ -46,24 +46,56 @@ npm install --save crypto-use
 #### Encryption
 
 ```javascript
-import { encrypt } from 'crypto-use';
+import { encrypt, encrypt_object } from 'crypto-use';
 
-const encrypted_data = encrypt(
-  {
+const encrypted_data = encrypt({
+  // data can be any valid javascript expression, for example: strings, objects, arrays, functions (no fat arrow functions), numbers, dates, etc...
+  data: {
     Hello: 'World',
   },
-  'your-totally-secure-key'
-);
+  secret_key: 'your-totally-secure-key',
+});
+
+const encrypted_object = encrypt_object({
+  // object encryption keeps all the outer keys of the object, but encrypts all the values (except "_id")
+  // data must to be an object
+  data: {
+    _id: '5cd223c243ed3900220f8ee5',
+    hello: 'world',
+  },
+  secret_key: 'your-totally-secure-key',
+});
 ```
 
 #### Decryption
 
 ```javascript
-import { decrypt } from 'crypto-use';
+import { decrypt, decrypt_object } from 'crypto-use';
 
-//encrypted_data previously encrypted
+// encrypted_data previously encrypted
+// encrypted_data === "U2FsdGVkX1+4iC1daCbTnMFFQjOX94Q4U2FsdGVkX1+4iC1daCbTnMFFQjOX94Q4"
 
-const decrypted = decrypt(encrypted_data, 'your-totally-secure-key');
+const decrypted_data = decrypt({
+  encrypted_data: encrypted_data,
+  secret_key: 'your-totally-secure-key',
+});
+
+// If you are not sure if your data is encrypted, you can get back the data you tried to decrypt by giving the parameter "give_back_invalid", by default it is false
+
+const not_encrypted_data = decrypt({
+  encrypted_data: 'I am not encrypted',
+  secret_key: 'your-totally-secure-key',
+  give_back_invalid: true,
+});
+// not_encrypted_data === "I am not encrypted"
+
+// encrypted_object previously encrypted
+// encrypted_object ===  { _id: '5cd223c243ed3900220f8ee5', hello: "U2FsdGVkX1+4iC1daCbTnMFFQjOX94Q4U2Fs" }
+
+const decrypted_object = decrypt_object({
+  encrypted_object: encrypted_object,
+  secret_key: 'your-totally-secure-key',
+});
 ```
 
 #### Key Retrieval
