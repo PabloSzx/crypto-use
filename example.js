@@ -31,6 +31,7 @@ console.log('decrypted_data', decrypted_data);
 const encrypted_object = encrypt_object({
   data,
   secret_key,
+  ignore_keys: ['_id', 'a'],
 });
 
 console.log('encrypted_object', encrypted_object);
@@ -38,6 +39,7 @@ console.log('encrypted_object', encrypted_object);
 const decrypted_object = decrypt_object({
   encrypted_object,
   secret_key,
+  ignore_keys: ['_id'],
 });
 
 console.log('decrypted_object', decrypted_object);

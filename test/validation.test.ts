@@ -24,4 +24,10 @@ describe('validation', () => {
       validate([], 'array', 'object');
     }).toThrowError('array must be an object');
   });
+
+  it('should throw if not array', () => {
+    expect(() => {
+      validate({}, 'object', 'array');
+    }).toThrowError('object must be an array');
+  });
 });

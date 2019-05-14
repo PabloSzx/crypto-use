@@ -44,6 +44,47 @@ describe('object encryption works', () => {
 
     expect(decrypted_object).toEqual(data);
   });
+
+  it('encryption ignores specified keys', () => {
+    const data = {
+      a: 1,
+      b: 2,
+    };
+
+    const secret_key = 'asd';
+
+    const encrypted_object: any = encrypt_object({
+      data,
+      secret_key,
+      ignore_keys: ['a'],
+    });
+
+    expect(encrypted_object.a).toBe(data.a);
+    expect(encrypted_object.b).not.toBe(data.b);
+  });
+
+  it('decryption ignores specified keys', () => {
+    const data = {
+      a: 1,
+      b: 2,
+    };
+
+    const secret_key = 'asd';
+
+    const encrypted_object: any = encrypt_object({
+      data,
+      secret_key,
+    });
+
+    const decrypted_object: any = decrypt_object({
+      encrypted_object,
+      secret_key,
+      ignore_keys: ['a'],
+    });
+
+    expect(decrypted_object.a).not.toBe(data.a);
+    expect(decrypted_object.b).toBe(data.b);
+  });
 });
 
 describe('encryption errors catches', () => {

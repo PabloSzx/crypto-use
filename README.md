@@ -8,7 +8,6 @@
 [![dependencies](https://badgen.net/david/dep/pabloszx/crypto-use)](https://runpkg.com/?crypto-use/package.json)
 [![dev-dependencies](https://badgen.net/david/dev/pabloszx/crypto-use)](https://runpkg.com/?crypto-use/package.json)
 
-
 [![CircleCI](https://circleci.com/gh/PabloSzx/crypto-use.svg?style=svg)](https://circleci.com/gh/PabloSzx/crypto-use)
 
 [![Try crypto-use on RunKit](https://badge.runkitcdn.com/crypto-use.svg)](https://npm.runkit.com/crypto-use)
@@ -54,6 +53,7 @@ import { encrypt, encrypt_object } from 'crypto-use';
 
 const encrypted_data = encrypt({
   // data can be any valid javascript expression, for example: strings, objects, arrays, functions (no fat arrow functions), numbers, dates, etc...
+
   data: {
     Hello: 'World',
   },
@@ -61,13 +61,16 @@ const encrypted_data = encrypt({
 });
 
 const encrypted_object = encrypt_object({
-  // object encryption keeps all the outer keys of the object, but encrypts all the values (except "_id")
+  // object encryption keeps all the outer keys of the object, but encrypts all the values
+  // except the keys specified by "ignore_keys" which has to be an array of strings
+
   // data must to be an object
   data: {
     _id: '5cd223c243ed3900220f8ee5',
     hello: 'world',
   },
   secret_key: 'your-totally-secure-key',
+  ignore_keys: ['_id'], // optional, by default "ignore_keys" contains "_id"
 });
 ```
 
@@ -96,9 +99,12 @@ const not_encrypted_data = decrypt({
 // encrypted_object previously encrypted
 // encrypted_object ===  { _id: '5cd223c243ed3900220f8ee5', hello: "U2FsdGVkX1+4iC1daCbTnMFFQjOX94Q4U2Fs" }
 
+// decrypt_object decrypts all the values of the object, except the keys specified by "ignore_keys" which has to be an array of strings
+
 const decrypted_object = decrypt_object({
   encrypted_object: encrypted_object,
   secret_key: 'your-totally-secure-key',
+  ignore_keys: ['_id'], // optional, by default "ignore_keys" contains "_id"
 });
 ```
 
