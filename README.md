@@ -1,12 +1,12 @@
 # crypto-use
 
-![github-version](https://badgen.net/github/release/pabloszx/crypto-use)
-![npm-version](https://badgen.net/npm/v/crypto-use)
+[![github-version](https://badgen.net/github/release/pabloszx/crypto-use)](https://github.com/PabloSzx/crypto-use)
+[![npm-version](https://badgen.net/npm/v/crypto-use)](https://www.npmjs.com/package/crypto-use)
 
-![install-size](https://badgen.net/packagephobia/install/crypto-use)
-![publish-size](https://badgen.net/packagephobia/publish/crypto-use)
-![dependencies](https://badgen.net/david/dep/pabloszx/crypto-use)
-![dev-dependencies](https://badgen.net/david/dev/pabloszx/crypto-use)
+[![install-size](https://badgen.net/packagephobia/install/crypto-use)](https://www.npmjs.com/package/crypto-use)
+[![publish-size](https://badgen.net/packagephobia/publish/crypto-use)](https://www.npmjs.com/package/crypto-use)
+[![dependencies](https://badgen.net/david/dep/pabloszx/crypto-use)](https://runpkg.com/?crypto-use/package.json)
+[![dev-dependencies](https://badgen.net/david/dev/pabloszx/crypto-use)](https://runpkg.com/?crypto-use/package.json)
 
 
 [![CircleCI](https://circleci.com/gh/PabloSzx/crypto-use.svg?style=svg)](https://circleci.com/gh/PabloSzx/crypto-use)
