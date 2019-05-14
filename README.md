@@ -1,10 +1,14 @@
 # crypto-use
 
 ![github-version](https://badgen.net/github/release/pabloszx/crypto-use)
+![npm-version](https://badgen.net/npm/v/crypto-use)
+
 ![install-size](https://badgen.net/packagephobia/install/crypto-use)
 ![publish-size](https://badgen.net/packagephobia/publish/crypto-use)
 ![dependencies](https://badgen.net/david/dep/pabloszx/crypto-use)
 ![dev-dependencies](https://badgen.net/david/dev/pabloszx/crypto-use)
+
+
 [![CircleCI](https://circleci.com/gh/PabloSzx/crypto-use.svg?style=svg)](https://circleci.com/gh/PabloSzx/crypto-use)
 
 [![Try crypto-use on RunKit](https://badge.runkitcdn.com/crypto-use.svg)](https://npm.runkit.com/crypto-use)
