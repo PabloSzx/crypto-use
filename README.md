@@ -114,13 +114,14 @@ const decrypted_object = decrypt_object({
 import { get_key } from 'crypto-use';
 
 (async () => {
-  const key = await get_key({
+  const { key, name } = await get_key({
     url: 'mongodb://localhost:27017', // required
     name: 'test_key', // required
     dbName: 'database_name', // optional, "keys" by default
     collectionName: 'collection_name', // optional, "keys" by default
   });
 
+  // name === "test_key"
   // key === "your-totally-secure-key"
 })();
 ```

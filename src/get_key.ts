@@ -25,13 +25,13 @@ export default async ({
     });
     const collection = client.db(dbName).collection(collectionName);
 
-    const key: { key: string; name: string } | null = await collection.findOne(
+    const key: { key: string; _id: string } | null = await collection.findOne(
       {
         _id: name,
       },
       {
         projection: {
-          name: 1,
+          _id: 1,
           key: 1,
         },
       }
@@ -40,7 +40,10 @@ export default async ({
     client.close();
 
     if (key) {
-      return key;
+      return {
+        name: key._id,
+        key: key.key,
+      };
     }
 
     throw new Error(

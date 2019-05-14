@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+import { generate } from 'randomstring';
 import { get_key, new_key } from '../src';
 
 dotenv.config();
@@ -27,12 +28,12 @@ describe('key retrieving', () => {
       overwrite: true,
     });
 
-    const { key: key2 } = await get_key({
+    const key2 = await get_key({
       url,
       name,
     });
 
-    expect([key1, key2]).toEqual(['asda', 'asdb']);
+    expect([key2.name, key1, key2.key]).toEqual([name, 'asda', 'asdb']);
     done();
   }, 30000);
 
@@ -87,4 +88,12 @@ describe('key management errors', () => {
       done();
     });
   }, 30000);
+  it('should throw if not key available', async () => {
+    await expect(
+      get_key({
+        url,
+        name: generate(),
+      })
+    ).rejects.toThrowError('Key not available');
+  });
 });

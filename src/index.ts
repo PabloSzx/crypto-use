@@ -4,6 +4,7 @@ import encrypt from './encrypt';
 import encrypt_object from './encrypt_object';
 import get_key from './get_key';
 import new_key from './new_key';
+import KeyManager from './key_manager';
 import { validate } from './utils';
 
 export {
@@ -14,4 +15,5 @@ export {
   get_key,
   new_key,
   validate,
+  KeyManager,
 };
