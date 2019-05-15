@@ -5,20 +5,25 @@ import { get_key, new_key } from '../src';
 dotenv.config();
 
 const url = process.env.MONGODB_URL || '';
-
+const collectionName = 'test';
+const dbName = 'test';
 describe('key retrieving', () => {
   it('should overwrite a key', async done => {
-    const name = 'test';
+    const name = generate();
 
     await new_key({
       url,
       name,
       key: 'asda',
       overwrite: true,
+      collectionName,
+      dbName,
     });
     const { key: key1 } = await get_key({
       url,
       name,
+      collectionName,
+      dbName,
     });
 
     await new_key({
@@ -26,11 +31,15 @@ describe('key retrieving', () => {
       name,
       key: 'asdb',
       overwrite: true,
+      collectionName,
+      dbName,
     });
 
     const key2 = await get_key({
       url,
       name,
+      collectionName,
+      dbName,
     });
 
     expect([key2.name, key1, key2.key]).toEqual([name, 'asda', 'asdb']);
@@ -42,6 +51,14 @@ describe('key retrieving', () => {
       url,
       name: 'test4',
       overwrite: true,
+      collectionName,
+      dbName,
+      generateOptions: {
+        length: 10,
+        readable: false,
+        charset: 'alphanumeric',
+        capitalization: 'uppercase',
+      },
     });
 
     expect(info).toBeTruthy();
@@ -54,6 +71,8 @@ describe('key retrieving', () => {
       name: 'test2',
       key: 'asd',
       overwrite: true,
+      collectionName,
+      dbName,
     });
 
     expect(info).toBeTruthy();
@@ -63,10 +82,25 @@ describe('key retrieving', () => {
     const key = await get_key({
       url,
       name: 'test2',
+      collectionName,
+      dbName,
     });
     expect(key).toBeTruthy();
     done();
   }, 30000);
+});
+
+describe('key error throws', () => {
+  it('insert should throw if url is wrong', async () => {
+    await expect(
+      new_key({
+        url: `mongodb://${generate({ length: 5 })}:${generate({
+          length: 5,
+        })}@localhost:27017`,
+        name: generate(),
+      })
+    ).rejects.toThrow();
+  });
 });
 
 describe('key management errors', () => {
@@ -76,6 +110,8 @@ describe('key management errors', () => {
       name: 'test3',
       key: 'asd',
       overwrite: true,
+      collectionName,
+      dbName,
     });
 
     new_key({
@@ -83,6 +119,8 @@ describe('key management errors', () => {
       name: 'test3',
       key: 'asd',
       overwrite: false,
+      collectionName,
+      dbName,
     }).catch(e => {
       expect(e).toBeTruthy();
       done();

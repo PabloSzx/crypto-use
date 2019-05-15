@@ -12,6 +12,8 @@ describe('entire cycle as dependency', () => {
   );
   const name = 'test3';
   const key = 'asd';
+  const collectionName = 'test';
+  const dbName = 'test';
 
   it('should complete the cycle', async done => {
     await new_key({
@@ -19,11 +21,15 @@ describe('entire cycle as dependency', () => {
       name,
       key,
       overwrite: true,
+      collectionName,
+      dbName,
     });
 
     const { key: secret_key } = await get_key({
       url,
       name,
+      collectionName,
+      dbName,
     });
 
     const encrypted_data = encrypt({

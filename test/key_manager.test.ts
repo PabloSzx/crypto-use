@@ -6,14 +6,16 @@ dotenv.config();
 
 describe('key manager works', () => {
   const url = process.env.MONGODB_URL || '';
+  const collectionName = 'test';
+  const dbName = 'test';
 
   const name = 'test3';
 
   it('should complete insertion of a new key', async done => {
     const key_manager = new KeyManager({
       url,
-      collectionName: 'test',
-      dbName: 'test',
+      collectionName,
+      dbName,
     });
     const generatedName = generate();
     const key = await key_manager.getKey(generatedName);
@@ -27,8 +29,8 @@ describe('key manager works', () => {
     await new_key({
       url,
       name,
-      collectionName: 'test',
-      dbName: 'test',
+      collectionName,
+      dbName,
       overwrite: true,
     });
 
@@ -48,8 +50,8 @@ describe('key manager works', () => {
   it('should get a key from cache', async done => {
     const key_manager = new KeyManager({
       url,
-      collectionName: 'test',
-      dbName: 'test',
+      collectionName,
+      dbName,
     });
 
     const generatedName = generate();

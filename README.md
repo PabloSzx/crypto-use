@@ -53,7 +53,9 @@ npm install --save crypto-use
 import { encrypt, encrypt_object } from 'crypto-use';
 
 const encrypted_data = encrypt({
-  // data can be any valid javascript expression, for example: strings, objects, arrays, functions (no fat arrow functions), numbers, dates, etc...
+  // data can be any valid javascript expression
+  // for example: strings, objects, arrays,
+  // functions (no fat arrow functions), numbers, dates, etc...
 
   data: {
     Hello: 'World',
@@ -62,8 +64,10 @@ const encrypted_data = encrypt({
 });
 
 const encrypted_object = encrypt_object({
-  // object encryption keeps all the outer keys of the object, but encrypts all the values
-  // except the keys specified by "ignore_keys" which has to be an array of strings
+  // object encryption keeps all the outer keys of the object,
+  // but encrypts all the values
+  // except the keys specified by "ignore_keys"
+  // which has to be an array of strings
 
   // data must to be an object
   data: {
@@ -81,14 +85,18 @@ const encrypted_object = encrypt_object({
 import { decrypt, decrypt_object } from 'crypto-use';
 
 // encrypted_data previously encrypted
-// encrypted_data === "U2FsdGVkX1+4iC1daCbTnMFFQjOX94Q4U2FsdGVkX1+4iC1daCbTnMFFQjOX94Q4"
+// encrypted_data ===
+// "U2FsdGVkX1+4iC1daCbTnMFFQjOX94Q4U2FsdGVkX1+4iC1daCbTnMFFQjOX94Q4"
 
 const decrypted_data = decrypt({
   encrypted_data: encrypted_data,
   secret_key: 'your-totally-secure-key',
 });
 
-// If you are not sure if your data is encrypted, you can get back the data you tried to decrypt by giving the parameter "give_back_invalid", by default it is false
+// If you are not sure if your data is encrypted,
+// you can get back the data you tried to decrypt
+// by giving the parameter "give_back_invalid"
+// by default it is false
 
 const not_encrypted_data = decrypt({
   encrypted_data: 'I am not encrypted',
@@ -98,9 +106,13 @@ const not_encrypted_data = decrypt({
 // not_encrypted_data === "I am not encrypted"
 
 // encrypted_object previously encrypted
-// encrypted_object ===  { _id: '5cd223c243ed3900220f8ee5', hello: "U2FsdGVkX1+4iC1daCbTnMFFQjOX94Q4U2Fs" }
+// encrypted_object ===
+// { _id: '5cd223c243ed3900220f8ee5',
+// hello: "U2FsdGVkX1+4iC1daCbTnMFFQjOX94Q4U2Fs" }
 
-// decrypt_object decrypts all the values of the object, except the keys specified by "ignore_keys" which has to be an array of strings
+// decrypt_object decrypts all the values of the object,
+// except the keys specified by "ignore_keys" which
+// has to be an array of strings
 
 const decrypted_object = decrypt_object({
   encrypted_object: encrypted_object,
@@ -153,9 +165,9 @@ import { new_key } from 'crypto-use';
 
 The Key Manager after it is instantiated it makes a _cache_, which you should only access by using the function **getKey** which works basically doing three things:
 
-- If the **_name_** especified already exists in **_cache_** it returns the key asssociated
-- If the **_name_** especified doesn't exists in **_cache_** it tries to get the **key** from the **database** and returns it
-- If the **key** does not exists in database, it generates a new one and returns it
+- If the **_name_** especified already exists in **_cache_** it returns the key asssociated.
+- If the **_name_** especified doesn't exists in **_cache_** it tries to get the **key** from the **database** and returns it.
+- If the **key** does not exists in database, it generates a new one and returns it.
 
 ```javascript
 import { KeyManager } from 'crypto-use';

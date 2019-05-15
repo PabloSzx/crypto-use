@@ -10,6 +10,8 @@ describe('entire cycle', () => {
   const data = JSON.parse(
     fs.readFileSync(path.join(__dirname, './data/data.json')).toString()
   );
+  const collectionName = 'test';
+  const dbName = 'test';
   const name = 'test3';
   const key = 'asd';
 
@@ -19,11 +21,15 @@ describe('entire cycle', () => {
       name,
       key,
       overwrite: true,
+      collectionName,
+      dbName,
     });
 
     const { key: secret_key } = await get_key({
       url,
       name,
+      collectionName,
+      dbName,
     });
 
     const encrypted_data = encrypt({
