@@ -21,7 +21,7 @@ describe('key manager works', () => {
     expect(key).toBeTruthy();
 
     done();
-  });
+  }, 30000);
 
   it('should get a key from a already existant in database', async done => {
     await new_key({
@@ -43,7 +43,7 @@ describe('key manager works', () => {
     expect(key).toBeTruthy();
 
     done();
-  });
+  }, 30000);
 
   it('should get a key from cache', async done => {
     const key_manager = new KeyManager({
@@ -59,7 +59,7 @@ describe('key manager works', () => {
     const key2 = await key_manager.getKey(generatedName);
     expect(key2).toBe(key1);
     done();
-  });
+  }, 30000);
 
   it('should throw if invalid mongodb url', async () => {
     const key_manager = new KeyManager({
@@ -78,5 +78,5 @@ describe('key manager works', () => {
         'keys'
       )
     ).rejects.toThrow();
-  });
+  }, 30000);
 });

@@ -46,7 +46,7 @@ describe('key retrieving', () => {
 
     expect(info).toBeTruthy();
     done();
-  });
+  }, 30000);
 
   it('should insert a key', async done => {
     const info = await new_key({
@@ -58,7 +58,7 @@ describe('key retrieving', () => {
 
     expect(info).toBeTruthy();
     done();
-  });
+  }, 30000);
   it('should get a key', async done => {
     const key = await get_key({
       url,
@@ -66,7 +66,7 @@ describe('key retrieving', () => {
     });
     expect(key).toBeTruthy();
     done();
-  });
+  }, 30000);
 });
 
 describe('key management errors', () => {
@@ -95,5 +95,5 @@ describe('key management errors', () => {
         name: generate(),
       })
     ).rejects.toThrowError('Key not available');
-  });
+  }, 30000);
 });

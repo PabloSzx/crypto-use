@@ -26,11 +26,12 @@ Right now there are four features working:
 - Decrypt Data using Ciphers
 - Search for a key to a specified **MongoDB** database and collection
 - Save a key to a specified **MongoDB** database and collection
+- **Key Manager**: mantain a _cache_ of keys, in order to not having to query a key everytime it is needed.
 
 There are a couple of featured planned to do:
 
-- **Key cache**: mantain a _cache_ of keys, in order to not having to query a key everytime it is needed.
 - **Any encryption method**: give the user the ability to use any available encryption method
+- Improve the **Key Manager**
 
 ## Installation
 
@@ -147,6 +148,30 @@ import { new_key } from 'crypto-use';
 ```
 
 > If no key is given, it will be automatically generated using [randomstring](https://www.npmjs.com/package/randomstring#api), which you can customize using **generateOptions**
+
+#### Key Manager
+
+The Key Manager after it is instantiated it makes a _cache_, which you should only access by using the function **getKey** which works basically doing three things:
+
+- If the **_name_** especified already exists in **_cache_** it returns the key asssociated
+- If the **_name_** especified doesn't exists in **_cache_** it tries to get the **key** from the **database** and returns it
+- If the **key** does not exists in database, it generates a new one and returns it
+
+```javascript
+import { KeyManager } from 'crypto-use';
+
+(async () => {
+  const key_manager = new KeyManager({
+    url: 'mongodb://localhost:27017', // required
+    collectionName: 'collection_name', // optional, "keys" by default
+    dbName: 'database_name', // optional, "keys" by default
+  });
+
+  const key = await key_manager.getKey('name');
+
+  // key === "your-totally-secure-key"
+})();
+```
 
 ## License
 
