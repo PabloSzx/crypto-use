@@ -44,5 +44,5 @@ describe('entire cycle as dependency', () => {
 
     expect(decrypted_data).toEqual(data);
     done();
-  });
+  }, 30000);
 });

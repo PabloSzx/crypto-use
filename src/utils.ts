@@ -1,5 +1,5 @@
 import { isString, isEmpty, isBoolean, isArray } from 'validate.js';
-import isPlainObject from 'lodash/isPlainObject';
+import { isPlainObject } from 'lodash';
 
 export const validate = (
   data: any,

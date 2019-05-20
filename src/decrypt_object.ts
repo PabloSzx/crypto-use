@@ -1,5 +1,4 @@
-import reduce from 'lodash/reduce';
-import includes from 'lodash/includes';
+import { reduce, includes } from 'lodash';
 import decrypt from './decrypt';
 import { validate } from './utils';
 

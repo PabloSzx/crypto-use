@@ -1,6 +1,6 @@
 import new_key from './new_key';
 import get_key from './get_key';
-import has from 'lodash/has';
+import { has } from 'lodash';
 
 interface Hash<T> {
   [key: string]: T;
