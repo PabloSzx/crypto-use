@@ -105,7 +105,7 @@ describe('decryption errors catches', () => {
         encrypted_data: 'asd',
         secret_key: '',
       });
-    }).toThrowError('secret_key must be a non-empty string');
+    }).toThrowError('Data not encrypted or invalid key!');
   });
 
   it('catches not encrypted data', () => {
