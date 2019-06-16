@@ -10,7 +10,7 @@
     "dist",
     "example.js"
   ],
-  "main": "dist/index.js",
+  "main": "dist/index.umd.js",
   "unpkg": "dist/index.umd.js",
   "module": "dist/index.mjs",
   "source": "src/index.ts",
@@ -38,7 +38,7 @@
     "mongodb": "^3.2.4",
     "randomstring": "^1.1.5",
     "serialize-javascript": "^1.7.0",
-    "validate.js": "^0.12.0"
+    "validate.js": "^0.13.1"
   },
   "devDependencies": {
     "@types/crypto-js": "^3.1.43",
@@ -58,7 +58,7 @@
     "pretty-quick": "^1.10.0",
     "rollup": "^1.11.3",
     "ts-jest": "^24.0.2",
-    "tsdx": "^0.5.9",
+    "tsdx": "^0.6.1",
     "typescript": "^3.4.5"
   },
   "runkitExampleFilename": "example.js"
