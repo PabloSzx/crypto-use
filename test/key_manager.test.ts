@@ -5,7 +5,7 @@ import { generate } from 'randomstring';
 dotenv.config();
 
 describe('key manager works', () => {
-  const url = process.env.MONGODB_URL || '';
+  const url = process.env.MONGODB_URL || 'mongodb://localhost:27017';
   const collectionName = 'test';
   const dbName = 'test';
 

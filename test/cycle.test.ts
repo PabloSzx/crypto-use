@@ -6,7 +6,7 @@ import path from 'path';
 dotenv.config();
 
 describe('entire cycle', () => {
-  const url = process.env.MONGODB_URL || '';
+  const url = process.env.MONGODB_URL || 'mongodb://localhost:27017';
   const data = JSON.parse(
     fs.readFileSync(path.join(__dirname, './data/data.json')).toString()
   );

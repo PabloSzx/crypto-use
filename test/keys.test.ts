@@ -4,7 +4,7 @@ import { get_key, new_key } from '../src';
 
 dotenv.config();
 
-const url = process.env.MONGODB_URL || '';
+const url = process.env.MONGODB_URL || 'mongodb://localhost:27017';
 const collectionName = 'test';
 const dbName = 'test';
 describe('key retrieving', () => {

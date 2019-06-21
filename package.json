@@ -10,14 +10,12 @@
     "dist",
     "example.js"
   ],
-  "main": "dist/index.umd.js",
-  "unpkg": "dist/index.umd.js",
-  "module": "dist/index.mjs",
-  "source": "src/index.ts",
-  "types": "dist/src/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/crypto-use.mjs",
   "scripts": {
-    "build": "microbundle",
+    "build": "tsdx build",
     "prepublishOnly": "yarn build && yarn test",
+    "start": "tsdx watch",
     "test": "tsdx test",
     "watch": "tsdx test --watch --coverage"
   },
@@ -49,17 +47,17 @@
     "@types/prettier": "^1.16.3",
     "@types/randomstring": "^1.1.6",
     "@types/serialize-javascript": "^1.5.0",
-    "crypto-use": "^1.0.13-0",
+    "crypto-use": "^1.1.4",
     "dotenv": "^8.0.0",
     "husky": "^2.1.0",
     "jest": "^24.8.0",
-    "microbundle": "^0.11.0",
     "prettier": "^1.17.0",
     "pretty-quick": "^1.10.0",
     "rollup": "^1.11.3",
     "ts-jest": "^24.0.2",
-    "tsdx": "^0.6.1",
+    "tsdx": "^0.7.2",
     "typescript": "^3.4.5"
   },
-  "runkitExampleFilename": "example.js"
+  "runkitExampleFilename": "example.js",
+  "typing": "dist/index.d.ts"
 }
