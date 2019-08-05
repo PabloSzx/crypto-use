@@ -10,6 +10,8 @@
 
 [![CircleCI](https://circleci.com/gh/PabloSzx/crypto-use.svg?style=svg)](https://circleci.com/gh/PabloSzx/crypto-use)
 
+[![Coverage Status](https://coveralls.io/repos/github/PabloSzx/crypto-use/badge.svg?branch=master)](https://coveralls.io/github/PabloSzx/crypto-use?branch=master)
+
 [![Try crypto-use on RunKit](https://badge.runkitcdn.com/crypto-use.svg)](https://npm.runkit.com/crypto-use)
 
 ## Description
@@ -165,9 +167,9 @@ import { new_key } from 'crypto-use';
 
 The Key Manager after it is instantiated it makes a _cache_, which you should only access by using the function **getKey** which works basically doing three things:
 
-- If the **_name_** especified already exists in **_cache_** it returns the key asssociated.
-- If the **_name_** especified doesn't exists in **_cache_** it tries to get the **key** from the **database** and returns it.
-- If the **key** does not exists in database, it generates a new one and returns it.
+- If the **_name_** especified already exist in **_cache_** it returns the key asssociated.
+- If the **_name_** especified doesn't exist in **_cache_** it tries to get the **key** from the **database** and returns it.
+- If the **key** does not exist in database, it generates a new one and returns it.
 
 ```javascript
 import { KeyManager } from 'crypto-use';
